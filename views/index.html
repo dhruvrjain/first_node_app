@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: auto;
+            text-align: center;
+        }
+        h1:hover{
+            transform: scale(1.5);
+            transition: ease-in-out;
+            transition-duration: 2s;
+        }
+        header ul{
+            align-items: center;
+        }
+        ul li{
+            display: inline-block;
+            margin: 2em ;
+        }
+        li a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <ul>
+            <li><a href="http://localhost:3000/">Home</a></li>
+            <li><a href="http://localhost:3000/name">Name</a></li>
+            <li><a href="http://localhost:3000/clg">College</a></li>
+            <li><a href="http://localhost:3000/dept">Department</a></li>
+        </ul>
+    </header>
+    <h1>Welcome to my node project</h1>
+    <h2>Responses</h2>
+    <div>
+        <span><h4>Name :</h4></span>
+        <span><h4 id="name"></h4></span>
+    </div>
+    <div>
+        <span><h4>College :</h4></span>
+        <span><h4 id="college">College :</h4></span>
+    </div>
+    <div>
+        <span><h4>Department :</h4></span>
+        <span><h4 id="dept">Department :</h4></span>
+    </div>
+</body>
+<script>
+    fetch("/jsonSample")
+    .then(a=>a.json())
+    .then(data=>{
+        // console.log(data)
+        document.getElementById("name").innerText=data.name
+        document.getElementById("college").innerText=data.college
+        document.getElementById("dept").innerText=data.dept
+    })
+    .catch(err=>console.log(err));
+</script>
+</html>

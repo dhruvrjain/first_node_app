@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="mainDiv">
+    </div>
+</body>
+
+<script>
+    fetch("/products")
+    .then(a=>a.json())
+    .then(data=>{
+        data.forEach(element => {
+            let temp=`<div>
+    <img src=${element.img} width="300px" alt="">
+    <h2>${element.name}</h2>
+    <h1>${element.price}</h1>
+    </div>`
+    document.getElementById("mainDiv").innerHTML+=temp
+        });
+    })
+</script>
+</html>
